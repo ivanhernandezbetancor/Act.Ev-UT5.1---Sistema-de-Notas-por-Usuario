@@ -32,7 +32,6 @@ public class Main {
         Consola.cerrar();
     }
 
-    // MENÚ PRINCIPAL 
     private static boolean menuPrincipal() {
         Consola.mostrarMenuPrincipal();
         String opcion = Consola.leerLinea();
@@ -53,7 +52,6 @@ public class Main {
         return true;
     }
 
-    // MENÚ DE USUARIO
     private static boolean menuUsuario() {
         Consola.mostrarMenuUsuario(usuarioActual.getEmail());
         String opcion = Consola.leerLinea();
@@ -82,7 +80,6 @@ public class Main {
         return true;
     }
 
-    // FUNCIONES DE AUTENTICACIÓN 
     private static void registrarse() {
         Consola.mostrarSeparador();
         System.out.println(" REGISTRO ");
@@ -137,7 +134,6 @@ public class Main {
         }
     }
 
-    // FUNCIONES DE NOTAS 
     private static void crearNota() {
         Consola.mostrarSeparador();
         System.out.println(" CREAR NOTA ");
