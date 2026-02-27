@@ -8,7 +8,7 @@
 
 - Compila el proyecto desde la raíz main.java
 
-## - Estructura del Proyecto : 
+## Estructura del Proyecto : 
 
 ## Paquete: gestornotas.app
 - ArchivoDescripciónMain.javaPunto de entrada, menús principal y de usuario
