@@ -5,12 +5,10 @@ import java.util.Scanner;
 public class Consola {
     private static Scanner scanner = new Scanner(System.in);
 
-    // Mostrar línea separadora
     public static void mostrarSeparador() {
         System.out.println("=====================");
     }
 
-    // Mostrar menú principal
     public static void mostrarMenuPrincipal() {
         System.out.println("\n");
         mostrarSeparador();
@@ -23,7 +21,6 @@ public class Consola {
         System.out.print("Selecciona una opcion: ");
     }
 
-    // Mostrar menú de usuario
     public static void mostrarMenuUsuario(String email) {
         System.out.println("\n");
         mostrarSeparador();
@@ -40,40 +37,38 @@ public class Consola {
         System.out.print("Selecciona una opcion: ");
     }
 
-    // Leer entrada del usuario
     public static String leerLinea() {
         return scanner.nextLine().trim();
     }
 
-    // Leer contraseña 
     public static String leerPassword() {
         return scanner.nextLine().trim();
     }
 
-    // Mostrar mensaje de error
     public static void mostrarError(String mensaje) {
         System.out.println("[ERROR] " + mensaje);
     }
 
-    // Mostrar mensaje de éxito
     public static void mostrarExito(String mensaje) {
         System.out.println("[OK] " + mensaje);
     }
 
-    // Mostrar mensaje informativo
     public static void mostrarInfo(String mensaje) {
         System.out.println("[INFO] " + mensaje);
     }
 
-    // Mostrar pregunta
     public static void mostrarPregunta(String pregunta) {
         System.out.print(pregunta + ": ");
     }
 
-    // Cerrar scanner
     public static void cerrar() {
         if (scanner != null) {
             scanner.close();
         }
     }
+}
+            scanner.close();
+        }
+    }
+
 }
