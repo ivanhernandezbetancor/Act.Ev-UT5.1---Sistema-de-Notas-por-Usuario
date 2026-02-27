@@ -30,7 +30,6 @@ public class Nota {
         return titulo + ";" + contenido;
     }
 
-    // Método estático para parsear desde formato de archivo
     public static Nota fromString(String linea) {
         String[] partes = linea.split(";", 2);
         if (partes.length == 2) {
