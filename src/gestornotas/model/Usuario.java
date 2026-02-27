@@ -26,7 +26,6 @@ public class Usuario {
         return email + ";" + password;
     }
 
-    // Método para convertir email en nombre válido de carpeta
     public String sanitizeEmail() {
         return email.replace("@", "_").replace(".", "_");
     }
