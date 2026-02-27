@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
 
 public class UsuarioService {
     private static final Path DATA_DIR = Paths.get("data");
@@ -16,7 +18,6 @@ public class UsuarioService {
         initDirectories();
     }
 
-    // Inicializar directorios necesarios
     private void initDirectories() {
         try {
             if (!Files.exists(DATA_DIR)) {
@@ -33,28 +34,24 @@ public class UsuarioService {
         }
     }
 
-    // Registrar nuevo usuario
     public boolean registrar(String email, String password) {
-        // Validar que no exista
         if (usuarioExiste(email)) {
             return false;
         }
 
-        // Validar que no estén vacíos
         if (email.isEmpty() || password.isEmpty()) {
             return false;
         }
 
         try {
-            // Guardar en users.txt
             Usuario usuario = new Usuario(email, password);
             String linea = usuario.toString() + "\n";
 
-            try (var writer = Files.newBufferedWriter(USERS_FILE, StandardOpenOption.APPEND)) {
+            BufferedWriter writer = Files.newBufferedWriter(USERS_FILE, StandardOpenOption.APPEND);
+            try (writer) {
                 writer.write(linea);
             }
 
-            // Crear carpeta del usuario
             Path carpetaUsuario = USUARIOS_DIR.resolve(usuario.sanitizeEmail());
             if (!Files.exists(carpetaUsuario)) {
                 Files.createDirectory(carpetaUsuario);
@@ -67,27 +64,48 @@ public class UsuarioService {
         }
     }
 
-    // Verificar si el usuario existe
     public boolean usuarioExiste(String email) {
-        try (var reader = Files.newBufferedReader(USERS_FILE)) {
+        BufferedReader reader = null;
+        try {
+            reader = Files.newBufferedReader(USERS_FILE);
             String linea;
             while ((linea = reader.readLine()) != null) {
-                String emailEnArchivo = linea.split(";")[0];
-                if (emailEnArchivo.equals(email)) {
-                    return true;
+                if (linea.trim().isEmpty()) {
+                    continue;
+                }
+                
+                String[] partes = linea.split(";");
+                if (partes.length >= 1) {
+                    String emailEnArchivo = partes[0];
+                    if (emailEnArchivo.equals(email)) {
+                        return true;
+                    }
                 }
             }
         } catch (IOException e) {
             System.out.println("Error al verificar usuario: " + e.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("Error al cerrar reader: " + e.getMessage());
+                }
+            }
         }
         return false;
     }
 
-    // Login: verificar credenciales
     public Usuario login(String email, String password) {
-        try (var reader = Files.newBufferedReader(USERS_FILE)) {
+        BufferedReader reader = null;
+        try {
+            reader = Files.newBufferedReader(USERS_FILE);
             String linea;
             while ((linea = reader.readLine()) != null) {
+                if (linea.trim().isEmpty()) {
+                    continue;
+                }
+                
                 String[] partes = linea.split(";");
                 if (partes.length == 2) {
                     String emailEnArchivo = partes[0];
@@ -100,11 +118,18 @@ public class UsuarioService {
             }
         } catch (IOException error) {
             System.out.println("Error al hacer login: " + error.getMessage());
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("Error al cerrar reader: " + e.getMessage());
+                }
+            }
         }
         return null;
     }
 
-    // Obtener carpeta del usuario
     public Path getCarpetaUsuario(String email) {
         Usuario usuario = new Usuario(email, "");
         return USUARIOS_DIR.resolve(usuario.sanitizeEmail());
