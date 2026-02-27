@@ -26,6 +26,7 @@
 
 - login :
 
+
 <img width="1919" height="924" alt="image" src="https://github.com/user-attachments/assets/6e8dfa5d-ce3e-4555-a821-8c86c70714cf" />
 
 
@@ -37,6 +38,7 @@
 
 - Crear nota :
 
+
 <img width="1719" height="983" alt="image" src="https://github.com/user-attachments/assets/95baf759-dc63-4c0e-9505-7b83dc8c0e52" />
 
 
@@ -44,13 +46,17 @@
 
   
 - Listar :
+- 
 
-
-
-
-
+<img width="1918" height="989" alt="image" src="https://github.com/user-attachments/assets/19e3ae42-bde5-4a2e-94b3-68a44c8bb74d" />
 
 
 
 
 - Eliminar
+
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/a65ccf42-8c0c-4c2e-bdc7-1cac11bb81b4" />
+
+
+
+
