@@ -10,23 +10,13 @@
 
 ## Estructura del Proyecto
 
-gestornotas/
-├── app/
-│   └── Main.java                    # Punto de entrada y lógica de menús
-├── model/
-│   ├── Usuario.java                 # Modelo de usuario
-│   └── Nota.java                    # Modelo de nota
-├── service/
-│   ├── UsuarioService.java          # Lógica de usuarios
-│   └── NotaService.java             # Lógica de notas
-└── utils/
-    ├── Consola.java                 # Utilidades de consola
-    └── Validador.java               # Validaciones de datos
-
-data/
-├── users.txt                        # Base de datos de usuarios
-└── usuarios/
-    ├── email_usuario_1/
-    │   └── notas.txt
-    └── email_usuario_2/
-        └── notas.txt
+## Paquete: gestornotas.app
+- ArchivoDescripciónMain.javaPunto de entrada, menús principal y de usuario
+## Paquete: gestornotas.model
+- ArchivoDescripciónUsuario.javaModelo de usuario (email, contraseña)Nota.javaModelo de nota (título, contenido)
+## Paquete: gestornotas.service
+- ArchivoDescripciónUsuarioService.javaGestión de registro y loginNotaService.javaGestión de CRUD de notas
+## Paquete: gestornotas.utils
+- ArchivoDescripciónConsola.javaUtilidades de entrada/salidaValidador.javaValidaciones de datos
+## Carpeta: data/ (Se crea automáticamente)
+- ArchivoDescripciónusers.txtBase de datos de usuarios (auto-generado)usuarios/email_usuario/notas.txtNotas por usuario (auto-generado)
